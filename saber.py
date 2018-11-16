@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append('~/git_clones/rpi_ws281x/python')
+
 import config
 import neopixel as neo
 import time
