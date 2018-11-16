@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append('~/git_clones/rpi_ws281x/python')
-
 import config
 import neopixel as neo
 import time
@@ -9,7 +5,7 @@ import time
 class Saber(object):
     def __init__(self):
         self.strand_lights = config.SIDE_1_LEDS + config.SIDE_2_LEDS + config.SIDE_3_LEDS + config.SIDE_4_LEDS
-        self.strand = neo.Adafruit.NeoPixel(self.strand_lights,
+        self.strand = neo.Adafruit_NeoPixel(self.strand_lights,
                                             config.LED_PIN,
                                             config.LED_FREQ,
                                             config.LED_DMA,
