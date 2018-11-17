@@ -17,10 +17,11 @@ class Saber(object):
 
 
     def set_led(self, line, number, color, show):
+        print('setting led {0}'.format(line * number))
         if line == 1:
             self.strand.setPixelColor(number, color)
         elif line == 2:
-            self.strand.setPixelColor(100 - number, color)
+            self.strand.setPixelColor(101 - number, color)
         elif line == 3:
             if number != 49:
                 self.strand.setPixelColor(100 + number, color)
