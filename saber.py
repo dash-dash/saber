@@ -21,12 +21,12 @@ class Saber(object):
         if line == 1:
             self.strand.setPixelColor(number, color)
         elif line == 2:
-            self.strand.setPixelColor(101 - number, color)
+            self.strand.setPixelColor(99 - number, color)
         elif line == 3:
             if number != 49:
                 self.strand.setPixelColor(100 + number, color)
         elif line == 4:
-            self.strand.setPixelColor(199 - number, color)
+            self.strand.setPixelColor(198 - number, color)
 
         if show:
             self.strand.show()
