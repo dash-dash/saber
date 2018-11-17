@@ -46,16 +46,16 @@ class Saber(object):
         while True:
 
             for n in range(50):
-                self.set_led(0, n, neo.Color(200, 0, 0), False)
                 self.set_led(1, n, neo.Color(200, 0, 0), False)
                 self.set_led(2, n, neo.Color(200, 0, 0), False)
-                self.set_led(3, n, neo.Color(200, 0, 0), True)
-                time.sleep(50 / 1000.0)
+                self.set_led(3, n, neo.Color(200, 0, 0), False)
+                self.set_led(4, n, neo.Color(200, 0, 0), True)
+                time.sleep(100 / 1000.0)
 
             for n in range(50):
-                self.set_led(0, n, neo.Color(0, 0, 0), False)
                 self.set_led(1, n, neo.Color(0, 0, 0), False)
                 self.set_led(2, n, neo.Color(0, 0, 0), False)
-                self.set_led(3, n, neo.Color(0, 0, 0), True)
-                time.sleep(50 / 1000.0)
+                self.set_led(3, n, neo.Color(0, 0, 0), False)
+                self.set_led(4, n, neo.Color(0, 0, 0), True)
+                time.sleep(100 / 1000.0)
 
