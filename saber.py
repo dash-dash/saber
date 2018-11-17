@@ -17,25 +17,15 @@ class Saber(object):
 
 
     def set_led(self, line, number, color, show):
-        print('setting')
-        if line == 2 and number == 50:
-            print('Broken light')
-            return None
-
-        if line > 2:
-            print('Setting pixel {0} >> line {1} number {2}'.format(
-                line * number - 1,
-                line,
-                number
-            ))
-            self.strand.setPixelColor(line * number - 1, color)
-        else:
-            print('Setting pixel {0} >> line {1} number {2}'.format(
-                line * number,
-                line,
-                number
-            ))
-            self.strand.setPixelColor(line * number, color)
+        if line == 1:
+            self.strand.setPixelColor(number, color)
+        elif line == 2:
+            self.strand.setPixelColor(100 - number, color)
+        elif line == 3:
+            if number != 49:
+                self.strand.setPixelColor(100 + number, color)
+        elif line == 4:
+            self.strand.setPixelColor(150 + number, color)
 
         if show:
             self.strand.show()
@@ -45,17 +35,17 @@ class Saber(object):
         print('running')
         while True:
 
-            for n in range(1, 50):
+            for n in range(50):
                 self.set_led(1, n, neo.Color(200, 0, 0), False)
                 self.set_led(2, n, neo.Color(200, 0, 0), False)
                 self.set_led(3, n, neo.Color(200, 0, 0), False)
                 self.set_led(4, n, neo.Color(200, 0, 0), True)
                 time.sleep(100 / 1000.0)
 
-            for n in range(1, 50):
+            for n in range(50):
                 self.set_led(1, n, neo.Color(0, 0, 0), False)
                 self.set_led(2, n, neo.Color(0, 0, 0), False)
                 self.set_led(3, n, neo.Color(0, 0, 0), False)
                 self.set_led(4, n, neo.Color(0, 0, 0), True)
-                time.sleep(100 / 1000.0)
+                time.sleep(200 / 1000.0)
 
