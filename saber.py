@@ -25,7 +25,7 @@ class Saber(object):
             if number != 49:
                 self.strand.setPixelColor(100 + number, color)
         elif line == 4:
-            self.strand.setPixelColor(150 + number, color)
+            self.strand.setPixelColor(199 - number, color)
 
         if show:
             self.strand.show()
