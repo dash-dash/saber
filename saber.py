@@ -25,6 +25,7 @@ class Saber(object):
                     number
                 ))
                 self.strand.setPixelColor(line * number - 1, color)
+                self.strand.show()
             else:
                 print('Setting pixel {0} >> line {1} number {2}'.format(
                     line * number - 1,
@@ -32,9 +33,11 @@ class Saber(object):
                     number
                 ))
                 self.strand.setPixelColor(line * number, color)
+                self.strand.show()
 
 
     def run(self):
+        print('running')
         while True:
             for l in range(4):
                 for n in range(50):
