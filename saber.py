@@ -16,35 +16,46 @@ class Saber(object):
         self.strand.begin()
 
 
-    def set_led(self, line, number, color):
-        if not line == 2 and number == 50:
-            if line > 2:
-                print('Setting pixel {0} >> line {1} number {2}'.format(
-                    line * number - 1,
-                    line,
-                    number
-                ))
-                self.strand.setPixelColor(line * number - 1, color)
-                self.strand.show()
-            else:
-                print('Setting pixel {0} >> line {1} number {2}'.format(
-                    line * number - 1,
-                    line,
-                    number
-                ))
-                self.strand.setPixelColor(line * number, color)
-                self.strand.show()
+    def set_led(self, line, number, color, show):
+        print('setting')
+        if line == 2 and number == 50:
+            print('Broken light')
+            return None
+
+        if line > 2:
+            print('Setting pixel {0} >> line {1} number {2}'.format(
+                line * number - 1,
+                line,
+                number
+            ))
+            self.strand.setPixelColor(line * number - 1, color)
+        else:
+            print('Setting pixel {0} >> line {1} number {2}'.format(
+                line * number,
+                line,
+                number
+            ))
+            self.strand.setPixelColor(line * number, color)
+
+        if show:
+            self.strand.show()
 
 
     def run(self):
         print('running')
         while True:
-            for l in range(4):
-                for n in range(50):
-                    self.set_led(l, n, neo.Color(200, 0, 0))
-                    time.sleep(50 / 1000.0)
-            for l in range(4):
-                for n in range(50):
-                    self.set_led(l, n, neo.Color(0, 0, 0))
-                    time.sleep(50 / 1000.0)
+
+            for n in range(50):
+                self.set_led(0, n, neo.Color(200, 0, 0), False)
+                self.set_led(1, n, neo.Color(200, 0, 0), False)
+                self.set_led(2, n, neo.Color(200, 0, 0), False)
+                self.set_led(3, n, neo.Color(200, 0, 0), True)
+                time.sleep(50 / 1000.0)
+
+            for n in range(50):
+                self.set_led(0, n, neo.Color(0, 0, 0), False)
+                self.set_led(1, n, neo.Color(0, 0, 0), False)
+                self.set_led(2, n, neo.Color(0, 0, 0), False)
+                self.set_led(3, n, neo.Color(0, 0, 0), True)
+                time.sleep(50 / 1000.0)
 
