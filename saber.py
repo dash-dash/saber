@@ -13,6 +13,7 @@ class Saber(object):
                                             config.LED_BRIGHTNESS,
                                             config.LED_CHANNEL
                                             )
+        self.strand.begin()
 
     def run(self):
         while True:
