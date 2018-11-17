@@ -19,5 +19,5 @@ class Saber(object):
         while True:
             for i in range(self.strand_lights):
                 self.strand.setPixelColor(i, neo.Color(255, 0, 0))
-                self.strip.show()
+                self.strand.show()
                 time.sleep(50/1000.0)
