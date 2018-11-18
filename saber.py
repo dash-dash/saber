@@ -43,10 +43,10 @@ class Saber(object):
 
     def reverse_swipe(self, color, speed):
         for n in range(50):
-            self.set_led(4, n, color, False)
-            self.set_led(3, n, color, False)
-            self.set_led(2, n, color, False)
-            self.set_led(1, n, color, True)
+            self.set_led(1, 49 - n, color, False)
+            self.set_led(2, 49 - n, color, False)
+            self.set_led(3, 49 - n, color, False)
+            self.set_led(4, 49 - n, color, True)
             time.sleep(speed)
 
     def kit(self, side, length, color, background=rgb(0,0,0), speed=50/1000.0):
