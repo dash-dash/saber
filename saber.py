@@ -8,6 +8,7 @@ def rgb(r, g, b):
 
 
 def intensity_change(original, value, direction):
+    new = original
     if direction == 0:  # down
         if original >= value:
             new = original - value
