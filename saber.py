@@ -53,7 +53,7 @@ class Saber(object):
             r = intensity_change(r, value, 1)
         elif color == config.COLORS[1]:
             g = intensity_change(g, value, 1)
-        elif color == config.COLORS[1]:
+        elif color == config.COLORS[2]:
             b = intensity_change(b, value, 1)
         else:
             r = intensity_change(r, value, 1)
