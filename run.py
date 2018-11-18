@@ -24,6 +24,19 @@ if __name__ == '__main__':
 
             saber.swipe(rgb(0, 255, 0), 5 / 10000.0)
             saber.reverse_swipe(rgb(0, 0, 0), 5 / 10000.0)
+
+            for i in range(255):
+                for j in range(saber.strand_lights):
+                    saber.increase_led(j, 1, 'RED')
+                saber.strand.show()
+                time.sleep(1 / 1000.0)
+
+            for i in ranage(255):
+                for j in range(saber.strand_lights):
+                    saber.reduce_led(j, 1)
+                saber.strand.show()
+                time.sleep(1 / 1000.0)
+
     except KeyboardInterrupt:
         if args.clear:
             for j in range(255):
