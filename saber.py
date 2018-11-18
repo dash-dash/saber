@@ -2,9 +2,12 @@ import config
 import neopixel as neo
 import time
 
+def rgb(r, g, b):
+    return neo.Color(g, r, b)
+
 class Saber(object):
     def __init__(self):
-        self.strand_lights = config.SIDE_1_LEDS + config.SIDE_2_LEDS + config.SIDE_3_LEDS + config.SIDE_4_LEDS
+        self.strand_lights = sum(config.SIDES)
         self.strand = neo.Adafruit_NeoPixel(self.strand_lights,
                                             config.LED_PIN,
                                             config.LED_FREQ,
@@ -18,6 +21,8 @@ class Saber(object):
 
     def set_led(self, line, number, color, show):
         print('setting led {0}'.format(line * number))
+        self.strand.setPixelColor
+
         if line == 1:
             self.strand.setPixelColor(number, color)
         elif line == 2:
@@ -31,23 +36,20 @@ class Saber(object):
         if show:
             self.strand.show()
 
+    def swipe(self, color, speed):
+        for n in range(50):
+            # g - r- b
+
+            self.set_led(1, n, color, False)
+            self.set_led(2, n, color, False)
+            self.set_led(3, n, color, False)
+            self.set_led(4, n, color, True)
+            time.sleep(speed)
 
     def run(self):
         print('running')
         while True:
 
-            for n in range(50):
-                # g - r- b
-                self.set_led(1, n, neo.Color(155, 0, 0), False)
-                self.set_led(2, n, neo.Color(0, 155, 0), False)
-                self.set_led(3, n, neo.Color(0, 0, 155), False)
-                self.set_led(4, n, neo.Color(100, 100, 100), True)
-                time.sleep(5 / 1000.0)
-
-            for n in range(50):
-                self.set_led(1, n, neo.Color(0, 0, 0), False)
-                self.set_led(2, n, neo.Color(0, 0, 0), False)
-                self.set_led(3, n, neo.Color(0, 0, 0), False)
-                self.set_led(4, n, neo.Color(0, 0, 0), True)
-                time.sleep(5 / 1000.0)
+            self.swipe(rgb(255, 0, 0), 5 / 1000.0)
+            self.swipe(rgb(0, 0, 0), 5 / 1000.0)
 
