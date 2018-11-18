@@ -19,14 +19,14 @@ def intensity_change(original, value, direction):
 
 
 class Saber(object):
-    def __init__(self):
+    def __init__(self, max_brightness=255):
         self.strand_lights = sum(config.SIDES)
         self.strand = neo.Adafruit_NeoPixel(self.strand_lights,
                                             config.LED_PIN,
                                             config.LED_FREQ,
                                             config.LED_DMA,
                                             config.LED_INVERT,
-                                            config.LED_BRIGHTNESS,
+                                            max_brightness,
                                             config.LED_CHANNEL
                                             )
         self.strand.begin()
