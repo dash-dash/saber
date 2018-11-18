@@ -37,11 +37,11 @@ class Saber(object):
         int_val = self.strand.getPixelColor(led)
         hex_val = hex(int_val)[2::]
         hex_string = '0' * (6 - len(hex_val)) + hex_val
-        a = hex_string[:2]
-        b = hex_string[2:4]
-        c = hex_string[4:6]
+        g = hex_string[:2]
+        r = hex_string[2:4]
+        b = hex_string[4:6]
 
-        return a, b, c
+        return int(r, 16), int(g, 16), int(b, 16)
 
     def swipe(self, color, speed):
         for n in range(50):
