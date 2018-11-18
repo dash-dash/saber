@@ -38,8 +38,14 @@ class Saber(object):
 
     def swipe(self, color, speed):
         for n in range(50):
-            # g - r- b
+            self.set_led(1, n, color, False)
+            self.set_led(2, n, color, False)
+            self.set_led(3, n, color, False)
+            self.set_led(4, n, color, True)
+            time.sleep(speed)
 
+    def reverse_swipe(self, color, speed):
+        for n in range(50):
             self.set_led(1, n, color, False)
             self.set_led(2, n, color, False)
             self.set_led(3, n, color, False)
@@ -50,10 +56,10 @@ class Saber(object):
         print('running')
         while True:
 
-            self.swipe(rgb(255, 0, 0), 1 / 1000.0)
-            self.swipe(rgb(0, 0, 0), 1 / 1000.0)
-            self.swipe(rgb(0, 255, 0), 1 / 1000.0)
-            self.swipe(rgb(0, 0, 0), 1 / 1000.0)
-            self.swipe(rgb(0, 0, 255), 1 / 1000.0)
-            self.swipe(rgb(0, 0, 0), 1 / 1000.0)
+            self.swipe(rgb(255, 0, 0), 1 / 10000.0)
+            self.swipe(rgb(0, 0, 0), 1 / 10000.0)
+            self.swipe(rgb(0, 255, 0), 1 / 10000.0)
+            self.swipe(rgb(0, 0, 0), 1 / 10000.0)
+            self.swipe(rgb(0, 0, 255), 1 / 10000.0)
+            self.swipe(rgb(0, 0, 0), 1 / 10000.0)
 
