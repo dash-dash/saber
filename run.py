@@ -31,7 +31,7 @@ if __name__ == '__main__':
                 saber.strand.show()
                 time.sleep(1 / 1000.0)
 
-            for i in ranage(255):
+            for i in range(255):
                 for j in range(saber.strand_lights):
                     saber.reduce_led(j, 1)
                 saber.strand.show()
