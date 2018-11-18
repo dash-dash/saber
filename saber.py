@@ -51,7 +51,9 @@ class Saber(object):
         while True:
 
             self.swipe(rgb(255, 0, 0), 1 / 1000.0)
+            self.swipe(rgb(0, 0, 0), 1 / 1000.0)
             self.swipe(rgb(0, 255, 0), 1 / 1000.0)
+            self.swipe(rgb(0, 0, 0), 1 / 1000.0)
             self.swipe(rgb(0, 0, 255), 1 / 1000.0)
             self.swipe(rgb(0, 0, 0), 1 / 1000.0)
 
