@@ -2,8 +2,20 @@ import config
 import neopixel as neo
 import time
 
+
 def rgb(r, g, b):
     return neo.Color(g, r, b)
+
+
+def intensity_change(original, value, direction):
+    if direction == 0:  # down
+        if original >= value:
+            new = original - value
+    else:  # up
+        if original <= 255 + value:
+            new = original - value
+    return new
+
 
 class Saber(object):
     def __init__(self):
@@ -32,6 +44,38 @@ class Saber(object):
 
         if show:
             self.strand.show()
+
+    def increase_led(self, number, value, color='ALL'):
+        r, g, b = self.get_rgb(number)
+
+        if color == config.COLORS[0]:
+            r = intensity_change(r, value, 1)
+        elif color == config.COLORS[1]:
+            g = intensity_change(g, value, 1)
+        elif color == config.COLORS[1]:
+            b = intensity_change(b, value, 1)
+        else:
+            r = intensity_change(r, value, 1)
+            g = intensity_change(g, value, 1)
+            b = intensity_change(b, value, 1)
+
+        self.strand.setPixelColor(number, rgb(r, g, b))
+
+    def reduce_led(self, number, value, color='ALL'):
+        r, g, b = self.get_rgb(number)
+
+        if color == config.COLORS[0]:
+            r = intensity_change(r, value, 0)
+        elif color == config.COLORS[1]:
+            g = intensity_change(g, value, 0)
+        elif color == config.COLORS[2]:
+            b = intensity_change(b, value, 0)
+        else:
+            r = intensity_change(r, value, 0)
+            g = intensity_change(g, value, 0)
+            b = intensity_change(b, value, 0)
+
+        self.strand.setPixelColor(number, rgb(r, g, b))
 
     def get_rgb(self, led):
         int_val = self.strand.getPixelColor(led)
@@ -63,7 +107,7 @@ class Saber(object):
         for i in range(50):
             self.set_led(side, i, color, False)
 
-    def run(self):
+    def test_run(self):
         print('running')
         while True:
 
