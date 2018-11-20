@@ -14,7 +14,7 @@ def intensity_change(original, value, direction):
             new = original - value
     else:  # up
         if original <= 255 + value:
-            new = original - value
+            new = original + value
     return new
 
 
