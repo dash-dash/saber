@@ -14,9 +14,11 @@ def run(thread_name, queue, brightness):
     current_pattern = 'g'
     while True:
         try:
+            print('getting from queue')
             item = queue.get()
             if item in patterns:
                 current_pattern = item
+                print(item)
             elif item is None:
                 break
         except Empty:
