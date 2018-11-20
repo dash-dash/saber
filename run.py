@@ -58,7 +58,7 @@ if __name__ == '__main__':
         print('Use "-c" argument to clear LEDs on exit')
 
     q = Queue()
-    thread = Thread(target=run, args=('run', q, args.brightness), args.frequency)
+    thread = Thread(target=run, args=('run', q, args.brightness, args.frequency))
     thread.start()
 
     while key_input(queue=q):
