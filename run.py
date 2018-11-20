@@ -10,7 +10,7 @@ patterns = ['r', 'g', 'b']
 
 def run(thread_name, queue, brightness):
     saber = Saber(brightness)
-
+    print('Running')
     current_pattern = 'g'
     while True:
         try:
@@ -23,14 +23,17 @@ def run(thread_name, queue, brightness):
             pass
 
         if current_pattern == 'r':
+            print('Pattern R')
             saber.swipe(rgb(255, 0, 0), 5 / 1000.0)
             saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
 
         elif current_pattern == 'g':
+            print('Pattern G')
             saber.swipe(rgb(0, 255, 0), 5 / 1000.0)
             saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
 
         elif current_pattern == 'b':
+            print('Pattern B')
             saber.swipe(rgb(0, 0, 255), 5 / 1000.0)
             saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
 
