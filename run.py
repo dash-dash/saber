@@ -8,7 +8,7 @@ from saber import Saber, rgb
 patterns = ['r', 'g', 'b']
 
 
-def run(thread_name, queue, brightness):
+def run(thread_name, queue, brightness, freq):
     saber = Saber(brightness)
     print('Running')
     current_pattern = 'g'
@@ -23,18 +23,18 @@ def run(thread_name, queue, brightness):
             pass
 
         if current_pattern == 'r':
-            saber.swipe(rgb(255, 0, 0), 5 / 1000.0)
-            saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
+            saber.swipe(rgb(255, 0, 0), freq / 1000.0)
+            saber.reverse_swipe(rgb(0, 0, 0), freq / 1000.0)
 
         elif current_pattern == 'g':
-            saber.swipe(rgb(0, 255, 0), 5 / 1000.0)
-            saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
+            saber.swipe(rgb(0, 255, 0), freq / 1000.0)
+            saber.reverse_swipe(rgb(0, 0, 0), freq / 1000.0)
 
         elif current_pattern == 'b':
-            saber.swipe(rgb(0, 0, 255), 5 / 1000.0)
-            saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
+            saber.swipe(rgb(0, 0, 255), freq / 1000.0)
+            saber.reverse_swipe(rgb(0, 0, 0), freq / 1000.0)
 
-    saber.swipe(rgb(0, 0, 0), 5 / 1000.0)
+    saber.swipe(rgb(0, 0, 0), freq / 1000.0)
 
 
 def key_input(queue):
@@ -50,6 +50,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
     parser.add_argument('-b', '--brightness', default=255, help='the max brightness of the strip', type=int)
+    parser.add_argument('-f', '--frequency', default=50, help='frequency at witch it runs', type=int)
     args = parser.parse_args()
 
     print('Press Ctrl-C to quit.')
@@ -57,7 +58,7 @@ if __name__ == '__main__':
         print('Use "-c" argument to clear LEDs on exit')
 
     q = Queue()
-    thread = Thread(target=run, args=('run', q, args.brightness))
+    thread = Thread(target=run, args=('run', q, args.brightness), args.frequency)
     thread.start()
 
     while key_input(queue=q):
