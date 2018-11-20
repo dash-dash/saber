@@ -1,6 +1,50 @@
 import argparse
+from threading import Thread
+from queue import Queue, Empty
 import time
+
 from saber import Saber, rgb
+
+patterns = ['r', 'g', 'b']
+
+
+def run(thread_name, queue, brightness):
+    saber = Saber(brightness)
+
+    current_pattern = 'g'
+    while True:
+        try:
+            item = queue.get()
+            if item in patterns:
+                current_pattern = item
+            elif item is None:
+                break
+        except Empty:
+            pass
+
+        if current_pattern == 'r':
+            saber.swipe(rgb(255, 0, 0), 5 / 1000.0)
+            saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
+
+        elif current_pattern == 'g':
+            saber.swipe(rgb(0, 255, 0), 5 / 1000.0)
+            saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
+
+        elif current_pattern == 'b':
+            saber.swipe(rgb(0, 0, 255), 5 / 1000.0)
+            saber.reverse_swipe(rgb(0, 0, 0), 5 / 1000.0)
+
+    saber.swipe(rgb(0, 0, 0), 5 / 1000.0)
+
+
+def key_input(queue):
+    choice = input("")
+    if choice == 'q':
+        queue.put(None)
+        return 0
+    queue.put(choice)
+    return 1
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -12,36 +56,9 @@ if __name__ == '__main__':
     if not args.clear:
         print('Use "-c" argument to clear LEDs on exit')
 
-    saber = Saber(args.brightness)
+    q = Queue()
+    thread = Thread(target=run, args=('run', q, args.brightness))
+    thread.start()
 
-    try:
-        while True:
-            saber.swipe(rgb(255, 0, 0), 5 / 10000.0)
-            saber.reverse_swipe(rgb(0, 0, 0), 5 / 10000.0)
-
-            saber.swipe(rgb(0, 0, 255), 5 / 10000.0)
-            saber.reverse_swipe(rgb(0, 0, 0), 5 / 10000.0)
-
-            saber.swipe(rgb(0, 255, 0), 5 / 10000.0)
-            saber.reverse_swipe(rgb(0, 0, 0), 5 / 10000.0)
-
-            for i in range(255):
-                for j in range(saber.strand_lights):
-                    saber.increase_led(j, 1, 'RED')
-                saber.strand.show()
-                time.sleep(1 / 1000.0)
-
-            for i in range(255):
-                for j in range(saber.strand_lights):
-                    saber.reduce_led(j, 1)
-                saber.strand.show()
-                time.sleep(1 / 1000.0)
-
-    except KeyboardInterrupt:
-        if args.clear:
-            for j in range(255):
-                for i in range(saber.strand_lights):
-                    saber.reduce_led(i, 1)
-                saber.strand.show()
-                time.sleep(1 / 1000.0)
-
+    while key_input(queue=q):
+        pass
