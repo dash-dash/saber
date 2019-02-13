@@ -53,7 +53,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--clear', action='store_true', help='clear the display on exit')
     parser.add_argument('-b', '--brightness', default=255, help='the max brightness of the strip', type=int)
-    parser.add_argument('-f', '--frequency', default=50, help='frequency at witch it runs', type=int)
+    parser.add_argument('-f', '--frequency', default=50, help='frequency at witch it runs', type=float)
     args = parser.parse_args()
 
     print('Press Ctrl-C to quit.')
