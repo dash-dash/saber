@@ -94,6 +94,7 @@ class Saber(object):
             self.set_led(2, n, color, False)
             self.set_led(3, n, color, False)
             self.set_led(4, n, color, True)
+            print(speed)
             time.sleep(speed)
 
     def reverse_swipe(self, color, speed):
@@ -102,6 +103,7 @@ class Saber(object):
             self.set_led(2, 49 - n, color, False)
             self.set_led(3, 49 - n, color, False)
             self.set_led(4, 49 - n, color, True)
+            print(speed)
             time.sleep(speed)
 
     def kit(self, side, length, color, background=rgb(0,0,0), speed=50/1000.0):
