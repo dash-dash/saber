@@ -106,10 +106,13 @@ class Saber(object):
             time.sleep(speed)
 
     def random(self, speed):
-        i = random.randint(0, 16777214)
-        h = hex(i)[2::]
-        h = '0' * (6 - len(h)) + h
-        color = rgb(int(h[:2], 16), int(h[2:4], 16), int(h[4:6], 16))
+        on_off = random.random()
+        color = rgb(0, 0, 0)
+        if on_off > 0.5:
+            i = random.randint(0, 16777214)
+            h = hex(i)[2::]
+            h = '0' * (6 - len(h)) + h
+            color = rgb(int(h[:2], 16), int(h[2:4], 16), int(h[4:6], 16))
         line = random.randint(1, 4)
         led = random.randint(0, 50)
         self.set_led(line, led, color, True)
