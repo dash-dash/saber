@@ -5,7 +5,7 @@ import time
 
 from saber import Saber, rgb
 
-patterns = ['r', 'g', 'b', 'rand']
+PATTERNS = ['r', 'g', 'b', 'rand']
 
 
 def run(thread_name, queue, brightness, freq):
@@ -15,7 +15,7 @@ def run(thread_name, queue, brightness, freq):
     while True:
         try:
             item = queue.get(False)
-            if item in patterns:
+            if item in PATTERNS:
                 current_pattern = item
             elif item is None:
                 break
