@@ -108,7 +108,7 @@ class Saber(object):
     def random(self, speed):
         on_off = random.random()
         color = rgb(0, 0, 0)
-        if on_off > 0.7:
+        if on_off > 0.9:
             i = random.randint(0, 16777214)
             h = hex(i)[2::]
             h = '0' * (6 - len(h)) + h
