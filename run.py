@@ -34,6 +34,9 @@ def run(thread_name, queue, brightness, freq):
             saber.swipe(rgb(0, 0, 255), freq / 1000.0)
             saber.reverse_swipe(rgb(0, 0, 0), freq / 1000.0)
 
+        elif current_pattern == 'rand':
+            saber.random(freq / 1000.0)
+
     saber.swipe(rgb(0, 0, 0), freq / 1000.0)
 
 

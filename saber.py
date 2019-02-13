@@ -1,6 +1,7 @@
 import config
 import neopixel as neo
 import time
+import random
 
 
 def rgb(r, g, b):
@@ -103,6 +104,15 @@ class Saber(object):
             self.set_led(3, 49 - n, color, False)
             self.set_led(4, 49 - n, color, True)
             time.sleep(speed)
+
+    def random(self, speed):
+        i = random.randint(0, 16777215)
+        h = hex(i)[2::]
+        color = rgb(int(h[:2], 16), int(h[2:4], 16), int(h[4:6], 16))
+        line = random.randint(1, 4)
+        led = random.randint(0, 5)
+        self.set_led(line, led, color, True)
+        time.sleep(speed)
 
     def kit(self, side, length, color, background=rgb(0,0,0), speed=50/1000.0):
         for i in range(50):
