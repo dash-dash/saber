@@ -108,6 +108,7 @@ class Saber(object):
     def random(self, speed):
         i = random.randint(0, 16777214)
         h = hex(i)[2::]
+        h = '0' * (6 - len(h)) + h
         color = rgb(int(h[:2], 16), int(h[2:4], 16), int(h[4:6], 16))
         line = random.randint(1, 4)
         led = random.randint(0, 50)
