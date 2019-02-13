@@ -112,7 +112,6 @@ class Saber(object):
         color = rgb(int(h[:2], 16), int(h[2:4], 16), int(h[4:6], 16))
         line = random.randint(1, 4)
         led = random.randint(0, 50)
-        print(line, led, color, True)
         self.set_led(line, led, color, True)
         time.sleep(speed)
 
