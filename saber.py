@@ -106,7 +106,7 @@ class Saber(object):
             time.sleep(speed)
 
     def random(self, speed):
-        i = random.randint(0, 16777215)
+        i = random.randint(0, 16777214)
         h = hex(i)[2::]
         color = rgb(int(h[:2], 16), int(h[2:4], 16), int(h[4:6], 16))
         line = random.randint(1, 4)
