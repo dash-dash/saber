@@ -5,7 +5,7 @@ import time
 
 from saber import Saber, rgb
 
-patterns = ['r', 'g', 'b']
+patterns = ['r', 'g', 'b', 'rand']
 
 
 def run(thread_name, queue, brightness, freq):
