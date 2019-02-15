@@ -105,17 +105,22 @@ class Saber(object):
             self.set_led(4, 49 - n, color, True)
             time.sleep(speed)
 
-    def random(self, speed):
+    def random(self, speed, perc_off=0.7, leds=1):
         on_off = random.random()
         color = rgb(0, 0, 0)
-        if on_off > 0.9:
+        if on_off > perc_off:
             i = random.randint(0, 16777214)
             h = hex(i)[2::]
             h = '0' * (6 - len(h)) + h
             color = rgb(int(h[:2], 16), int(h[2:4], 16), int(h[4:6], 16))
+
         line = random.randint(1, 4)
-        led = random.randint(0, 50)
-        self.set_led(line, led, color, True)
+        start_led = random.randint(0, 49)
+        end_led = max(start_led + leds, 50)
+
+        for i in range(start_led, end_led):
+            self.set_led(line, i, color, True)
+
         time.sleep(speed)
 
     def kit(self, side, length, color, background=rgb(0,0,0), speed=50/1000.0):
