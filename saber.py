@@ -105,7 +105,7 @@ class Saber(object):
             self.set_led(4, 49 - n, color, True)
             time.sleep(speed)
 
-    def random(self, speed, perc_off=0.7, leds=1):
+    def random(self, speed, perc_off=0.7, leds=5):
         on_off = random.random()
         color = rgb(0, 0, 0)
         if on_off > perc_off:
