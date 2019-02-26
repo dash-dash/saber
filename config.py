@@ -3,7 +3,12 @@ SIDE_2_LEDS = 50
 SIDE_3_LEDS = 49
 SIDE_4_LEDS = 50
 
-SIDES = [SIDE_1_LEDS, SIDE_2_LEDS, SIDE_3_LEDS, SIDE_4_LEDS]
+LINE_1 = {'number': 1, 'length': 50}
+LINE_2 = {'number': 2, 'length': 50}
+LINE_3 = {'number': 3, 'length': 49}
+LINE_4 = {'number': 4, 'length': 50}
+
+LINES = [LINE_1, LINE_2, LINE_3, LINE_4]
 
 LED_PIN = 18
 LED_FREQ = 800000

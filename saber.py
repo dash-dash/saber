@@ -89,6 +89,29 @@ class Saber(object):
 
         return int(r, 16), int(g, 16), int(b, 16)
 
+    def set_section(self, color, line, start, end):
+        end = max(end, line['length'])
+        for i in range(start, end):
+            self.set_led(line['number'], i, color, False)
+
+    def up_down(self, color, speed, size):
+        for i in range(50):
+            self.set_section(color, config.LINE_1, i, i + size)
+            self.set_section(color, config.LINE_2, i, i + size)
+            self.set_section(color, config.LINE_3, i, i + size)
+            self.set_section(color, config.LINE_4, i, i + size)
+            self.strand.show()
+            time.sleep(speed)
+        for i in range(50):
+            c = 49 - i
+            self.set_section(color, config.LINE_1, c, c + size)
+            self.set_section(color, config.LINE_2, c, c + size)
+            self.set_section(color, config.LINE_3, c, c + size)
+            self.set_section(color, config.LINE_4, c, c + size)
+            self.strand.show()
+            time.sleep(speed)
+
+
     def swipe(self, color, speed):
         for n in range(50):
             self.set_led(1, n, color, False)
