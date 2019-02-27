@@ -23,8 +23,6 @@ def run(thread_name, queue, brightness, freq):
         except Empty:
             pass
 
-        print(current_pattern)
-
         if current_pattern == 'r':
             saber.swipe(rgb(255, 0, 0), freq / 1000.0)
             saber.reverse_swipe(rgb(0, 0, 0), freq / 1000.0)
@@ -41,7 +39,6 @@ def run(thread_name, queue, brightness, freq):
             saber.random(freq / 1000.0)
 
         elif current_pattern.startswith('s'):
-            print('up_down')
             vals = current_pattern.slit(',')
             r, g, b, s, size = vals[1], vals[2], vals[3], vals[4], vals[5]
             saber.up_down(rgb(r, g, b), s / 1000.0, size)
