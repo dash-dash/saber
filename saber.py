@@ -90,7 +90,7 @@ class Saber(object):
         return int(r, 16), int(g, 16), int(b, 16)
 
     def set_section(self, color, line, start, end):
-        end = max(end, line['length'])
+        end = min(end, line['length'])
         for i in range(start, end):
             self.set_led(line['number'], i, color, False)
 
