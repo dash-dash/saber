@@ -39,8 +39,9 @@ def run(thread_name, queue, brightness, freq):
             saber.random(freq / 1000.0)
 
         elif current_pattern.startswith('s'):
+            # s,30,40,233,1,5
             vals = current_pattern.split(',')
-            r, g, b, s, size = vals[1], vals[2], vals[3], vals[4], vals[5]
+            r, g, b, s, size = int(vals[1]), int(vals[2]), int(vals[3]), int(vals[4]), int(vals[5])
             saber.up_down(rgb(r, g, b), s / 1000.0, size)
 
     saber.swipe(rgb(0, 0, 0), freq / 1000.0)
