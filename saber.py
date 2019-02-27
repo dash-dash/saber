@@ -97,17 +97,33 @@ class Saber(object):
     def up_down(self, color, speed, size):
         for i in range(50):
             self.set_section(color, config.LINE_1, i, i + size)
+            self.set_section(rgb(0, 0, 0), config.LINE_1, i + size, 50)
+            self.set_section(rgb(0, 0, 0), config.LINE_1, 0, i)
             self.set_section(color, config.LINE_2, i, i + size)
+            self.set_section(rgb(0, 0, 0), config.LINE_2, i + size, 50)
+            self.set_section(rgb(0, 0, 0), config.LINE_2, 0, i)
             self.set_section(color, config.LINE_3, i, i + size)
+            self.set_section(rgb(0, 0, 0), config.LINE_3, i + size, 50)
+            self.set_section(rgb(0, 0, 0), config.LINE_3, 0, i)
             self.set_section(color, config.LINE_4, i, i + size)
+            self.set_section(rgb(0, 0, 0), config.LINE_4, i + size, 50)
+            self.set_section(rgb(0, 0, 0), config.LINE_4, 0, i)
             self.strand.show()
             time.sleep(speed)
         for i in range(50):
             c = 49 - i
             self.set_section(color, config.LINE_1, c, c + size)
+            self.set_section(rgb(0, 0, 0), config.LINE_1, c + size, 50)
+            self.set_section(rgb(0, 0, 0), config.LINE_1, 0, c)
             self.set_section(color, config.LINE_2, c, c + size)
+            self.set_section(rgb(0, 0, 0), config.LINE_2, c + size, 50)
+            self.set_section(rgb(0, 0, 0), config.LINE_2, 0, c)
             self.set_section(color, config.LINE_3, c, c + size)
+            self.set_section(rgb(0, 0, 0), config.LINE_3, c + size, 50)
+            self.set_section(rgb(0, 0, 0), config.LINE_3, 0, c)
             self.set_section(color, config.LINE_4, c, c + size)
+            self.set_section(rgb(0, 0, 0), config.LINE_4, c + size, 50)
+            self.set_section(rgb(0, 0, 0), config.LINE_4, 0, c)
             self.strand.show()
             time.sleep(speed)
 
