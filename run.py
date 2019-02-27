@@ -15,6 +15,7 @@ def run(thread_name, queue, brightness, freq):
     while True:
         try:
             item = queue.get(False)
+            current_pattern = item
             # if item in PATTERNS:
             #     current_pattern = item
             if item is None:
