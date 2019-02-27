@@ -5,7 +5,7 @@ import time
 
 from saber import Saber, rgb
 
-PATTERNS = ['r', 'g', 'b', 'rand']
+PATTERNS = ['r', 'g', 'b', 'rand', 's']
 
 
 def run(thread_name, queue, brightness, freq):
@@ -38,7 +38,6 @@ def run(thread_name, queue, brightness, freq):
             saber.random(freq / 1000.0)
 
         elif current_pattern == 's':
-            print('up_down')
             saber.up_down(rgb(0, 0, 255), freq / 1000.0, 5)
 
     saber.swipe(rgb(0, 0, 0), freq / 1000.0)

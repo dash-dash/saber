@@ -95,7 +95,6 @@ class Saber(object):
             self.set_led(line['number'], i, color, False)
 
     def up_down(self, color, speed, size):
-        print('up_down')
         for i in range(50):
             self.set_section(color, config.LINE_1, i, i + size)
             self.set_section(color, config.LINE_2, i, i + size)
