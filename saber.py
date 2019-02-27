@@ -143,7 +143,7 @@ class Saber(object):
 
         line = random.randint(1, 4)
         start_led = random.randint(0, 49)
-        end_led = max(start_led + leds, 50)
+        end_led = min(start_led + leds, 50)
 
         for i in range(start_led, end_led):
             self.set_led(line, i, color, True)
