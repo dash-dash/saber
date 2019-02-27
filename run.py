@@ -15,9 +15,9 @@ def run(thread_name, queue, brightness, freq):
     while True:
         try:
             item = queue.get(False)
-            if item in PATTERNS:
-                current_pattern = item
-            elif item is None:
+            # if item in PATTERNS:
+            #     current_pattern = item
+            if item is None:
                 break
         except Empty:
             pass
@@ -37,8 +37,10 @@ def run(thread_name, queue, brightness, freq):
         elif current_pattern == 'rand':
             saber.random(freq / 1000.0)
 
-        elif current_pattern == 's':
-            saber.up_down(rgb(0, 0, 255), freq / 1000.0, 5)
+        elif current_pattern.startswith('s'):
+            vals = current_pattern.slit(',')
+            r, g, b, s, size = vals[1], vals[2], vals[3], vals[4], vals[5]
+            saber.up_down(rgb(r, g, b), s / 1000.0, size)
 
     saber.swipe(rgb(0, 0, 0), freq / 1000.0)
 
