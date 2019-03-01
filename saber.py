@@ -91,12 +91,9 @@ class Saber(object):
 
     def set_section(self, color, line, start, end):
         end = min(end, line['length'])
-        for i in range(start):
-            self.set_led(line['number'], i, rgb(0, 0, 0), False)
-        for i in range(start, end):
-            self.set_led(line['number'], i, color, False)
-        for i in range(end, line['length']):
-            self.set_led(line['number'], i, rgb(0, 0, 0), False)
+        [self.set_led(line['number'], i, rgb(0, 0, 0), False) for i in range(start)]
+        [self.set_led(line['number'], i, color, False) for i in range(start, end)]
+        [self.set_led(line['number'], i, rgb(0, 0, 0), False) for i in range(end, line['length'])]
 
     def up_down(self, color, speed, size):
         for i in range(50):
